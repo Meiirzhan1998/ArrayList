@@ -40,14 +40,11 @@ class CustomArrayList {
 
     public void remove(int index) {
         elements[index] = null;
-
         String[] newArray = new String[elements.length - 1];
-
         for (int i = 0; i < newArray.length; i++) {
-            if (elements[i] == null) {
-                newArray[index] = elements[i + 1];
+            if (elements[i] != null) {
+                newArray[i] = elements[i];
             }
-            newArray[i] = elements[i];
         }
         elements = newArray;
     }
