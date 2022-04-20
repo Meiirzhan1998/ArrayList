@@ -32,19 +32,26 @@ class CustomArrayList {
         }
 
         for (int i = this.size, j = 0; i < newArray.length; i++) {
-            newArray[i] = elements[j];
+            newArray[i] = list.elements[j];
+            j++;
         }
-
+        this.elements = newArray;
     }
 
     public void remove(int index) {
-        String[] newArray = new String[size - 1];
-        for(int i = 0; i<newArray.length;i++)
-        if ( elements[index] != null){
-            newArray[i]=this.elements[i];
+        elements[index] = null;
+
+        String[] newArray = new String[elements.length - 1];
+
+        for (int i = 0; i < newArray.length; i++) {
+            if (elements[i] == null) {
+                newArray[index] = elements[i + 1];
+            }
+            newArray[i] = elements[i];
         }
-        this.elements=newArray;
+        elements = newArray;
     }
+
 
     public String get(int index) {
         return elements[index];
